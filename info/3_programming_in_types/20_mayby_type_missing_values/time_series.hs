@@ -133,8 +133,42 @@ minTS = compareTS min
 maxTS :: Ord a => TS a -> Maybe (Int, Maybe a)
 maxTS = compareTS max
 
-
 minTsAll :: Maybe (Int, Maybe Double)
 minTsAll = minTS tsAll
 maxTs1 :: Maybe (Int, Maybe Double)
 maxTs1 = maxTS ts1
+
+-- ############################
+-- ### TRANSFORMING
+-- ############################
+diffPair :: Num a => Maybe a -> Maybe a -> Maybe a
+diffPair Nothing _ = Nothing
+diffPair _ Nothing = Nothing
+diffPair (Just x) (Just y) = Just (x - y)
+
+diffTS :: Num a => TS a -> TS a
+diffTS (TS [] []) = TS [] []
+diffTS (TS times values) = TS times (Nothing:diffValues)
+  where shiftValues = tail values
+        diffValues = zipWith diffPair shiftValues values
+
+meanMaybe :: (Real a) => [Maybe a] -> Maybe Double
+meanMaybe vals = if any (== Nothing) vals
+                 then Nothing
+                 else (Just avg)
+  where avg = mean (map fromJust vals)
+
+movingAvg :: (Real a) => [Maybe a] -> Int -> [Maybe Double]
+movingAvg [] n = []
+movingAvg vals n = if length nextVals == n
+                   then meanMaybe nextVals:movingAvg restVals n
+                   else []
+  where nextVals = take n vals
+        restVals = tail vals
+
+movingAverageTS :: (Real a) => TS a -> Int -> TS Double
+movingAverageTS (TS [] []) n= TS [] []
+movingAverageTS (TS times values) n = TS times smoothedValues
+  where ma = movingAvg values n
+        nothings = replicate (n `div` 2) Nothing
+        smoothedValues = mconcat [nothings,ma,nothings]
