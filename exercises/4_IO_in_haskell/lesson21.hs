@@ -1,3 +1,6 @@
+import qualified Data.Map as Map
+import Data.Maybe
+
 -- Q21.1 Translate listing 21.1 (reproduced below) into code by using do-notation in a Maybe.
 --   Assume that all the user input is replaced with a Map with a value for the input.
 --   Ignore the first putStrLn and simply return the statement at the end.
@@ -11,8 +14,19 @@
 --        let statement = helloPerson name
 --        putStrLn statement
 
+type Name = String
+inputData :: Map.Map Name String
+inputData = Map.fromList [("name", "Ben")]
 
+helloPerson :: Name -> String
+helloPerson name = "Hello" ++ " " ++ name ++ "!"
 
+myMain :: Maybe String
+myMain = do
+  name <- Map.lookup "name" inputData
+  let statement = helloPerson name
+  return statement
 
 -- Q21.2 Create a program that asks the user to input a number and then returns
 --   the nth Fibonacci numbers (see lesson 8 for an example of computing Fibonacci numbers).
+--
