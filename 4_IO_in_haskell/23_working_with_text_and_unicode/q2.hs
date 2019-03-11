@@ -1,0 +1,11 @@
+-- Q23.2 Use Data.Text.Lazy and Data.Text.Lazy.IO to rewrite the lazy I/O section from lesson
+--   22 by using the Text type.
+--
+--     toInts :: String -> [Int]
+--     toInts = map read . lines
+--
+--     main :: IO ()
+--     main = do
+--       userInput <- getContents
+--       let numbers = toInts userInput
+--       print (sum numbers)

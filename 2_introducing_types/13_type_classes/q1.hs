@@ -1,0 +1,24 @@
+-- Q13.1 If you ran the :info examples, you likely noticed that the type Word has come up a few times.
+--   Without looking at external resources, use :info to explore Word and the relevant type classes
+--   to come up with your own explanation for the Word type. How is it different from Int?
+--
+-- For Word:
+--  instance Bounded Word
+--  instance Enum Word
+--  instance Eq Word
+--  instance Integral Word
+--  instance Num Word
+--  instance Ord Word
+--  instance Read Word
+--  instance Real Word
+--  instance Show Word
+-- For Int:
+--  instance Bounded Int
+--  instance Enum Int
+--  instance Eq Int
+--  instance Integral Int
+--  instance Num Int
+--  instance Ord Int
+--  instance Read Int
+--  instance Real Int
+--  instance Show Int

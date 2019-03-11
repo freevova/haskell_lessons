@@ -1,0 +1,3 @@
+-- Q11.1 What is the type signature for filter? How is it different from map?
+-- map :: (a -> b) -> [a] -> [b]
+-- filter :: (a -> Bool) -> [a] -> [a]
