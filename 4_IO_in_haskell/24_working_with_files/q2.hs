@@ -1,0 +1,2 @@
+-- Q24.2 Write a program called capitalize.hs that will take a file as an argument, read
+--   that file, and then rewrite it capitalized.

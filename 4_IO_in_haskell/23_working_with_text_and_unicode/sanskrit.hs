@@ -14,5 +14,6 @@ highlight query fullText = T.intercalate highlighted pieces
   where pieces = T.splitOn query fullText
         highlighted = mconcat ["{",query,"}"]
 
+main :: IO ()
 main = do
   TIO.putStrLn (highlight dharma bgText)
