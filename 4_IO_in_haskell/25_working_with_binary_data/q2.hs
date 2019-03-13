@@ -1,0 +1,2 @@
+-- Q25.2 Add another glitching technique, randomReverseBytes, that randomly reverses a
+--   section of bytes in your data.
