@@ -1,0 +1,5 @@
+Download the ohsu_ncnm_wscc_bibs.mrc file from "https://archive.org/download/marc_oregon_summit_records/catalog_files".
+For this lesson, you’ll rename the file sample.mrc.
+
+Or simply run:
+wget  -O ./sample.mrc "https://archive.org/download/marc_oregon_summit_records/catalog_files/ohsu_ncnm_wscc_bibs.mrc"
