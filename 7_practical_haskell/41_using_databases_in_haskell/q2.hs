@@ -1,0 +1,2 @@
+-- Q41.2 Add an addtool command that prompts the user for information and then adds
+--   the tool by using the addTool action from the preceding question.
