@@ -11,3 +11,10 @@
 --
 --   Implement crossover where the result is a UArray but the crossover itself is performed using STUArrays.
 
+crossOver :: (UArray Int Int ,UArray Int Int) -> Int -> UArray Int Int
+crossOver (a1,a2) crossOverPt = runSTUArray $ do
+  st1 <- thaw a1
+  let end = (snd . bounds) a1
+  forM_ [crossOverPt .. end] $ \i -> do
+    writeArray st1 i $ a2 ! i
+  return st1
